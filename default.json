@@ -15,8 +15,8 @@
     {
       "description": [
         "Update github-releases in yml/lua files. Examples:",
-        "- `'# renovate: datasource=github-releases depName=X'`",
-        "- `'-- renovate: datasource=github-releases depName=X'`"
+        "- `# renovate: datasource=github-releases depName=X`",
+        "- `-- renovate: datasource=github-releases depName=X`"
       ],
       "customType": "regex",
       "datasourceTemplate": "github-releases",
@@ -29,8 +29,8 @@
     {
       "description": [
         "Track git-refs on main branch in yml/lua files. Examples:",
-        "- `'# renovate: datasource=git-refs packageName=X'`",
-        "- `'-- renovate: datasource=git-refs packageName=X'`"
+        "- `# renovate: datasource=git-refs packageName=X`",
+        "- `-- renovate: datasource=git-refs packageName=X`"
       ],
       "customType": "regex",
       "datasourceTemplate": "git-refs",
@@ -44,8 +44,8 @@
     {
       "description": [
         "Track git-refs on master branch in yml/lua files. Examples:",
-        "- `'# renovate: datasource=git-refs-master packageName=X'`",
-        "- `'-- renovate: datasource=git-refs-master packageName=X'`"
+        "- `# renovate: datasource=git-refs-master packageName=X`",
+        "- `-- renovate: datasource=git-refs-master packageName=X`"
       ],
       "customType": "regex",
       "datasourceTemplate": "git-refs",
@@ -59,7 +59,7 @@
     {
       "description": [
         "Update npm packages in GitHub Action workflow env vars. Example:",
-        "- `'# renovate: datasource=npm depName=X'`",
+        "- `# renovate: datasource=npm depName=X`",
         "Useful for semantic-release which recommends CI-only installation."
       ],
       "customType": "regex",
