@@ -1,0 +1,36 @@
+# mika-renovate
+
+This repository contains shared renovate configuration for my projects.
+
+## Features
+
+The shared configuration is defined in [`default.json`](./default.json). Tests for the regular expressions used in the
+configuration can be found in [default.test.ts](./default.test.ts).
+
+### Package Rules
+
+- Automerge digest updates directly to main without opening a PR
+
+### Custom Managers
+
+- Update github-releases in yml/lua files. Examples:
+  - `'# renovate: datasource=github-releases depName=X'`
+  - `'-- renovate: datasource=github-releases depName=X'`
+- Track git-refs on main branch in yml/lua files. Examples:
+  - `'# renovate: datasource=git-refs packageName=X'`
+  - `'-- renovate: datasource=git-refs packageName=X'`
+- Track git-refs on master branch in yml/lua files. Examples:
+  - `'# renovate: datasource=git-refs-master packageName=X'`
+  - `'-- renovate: datasource=git-refs-master packageName=X'`
+- Update npm packages in GitHub Action workflow env vars. Example:
+  - `'# renovate: datasource=npm depName=X'`
+  - Useful for semantic-release which recommends CI-only installation.
+
+A project can use this configuration by adding the following to its [`renovate.json`](renovate.json):
+
+```json
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>mikavilpas/mika-renovate"]
+}
+```
