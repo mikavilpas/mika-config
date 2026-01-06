@@ -14,16 +14,16 @@ configuration can be found in [default.test.ts](./default.test.ts).
 ### Custom Managers
 
 - Update github-releases in yml/lua files. Examples:
-  - `'# renovate: datasource=github-releases depName=X'`
-  - `'-- renovate: datasource=github-releases depName=X'`
+  - `# renovate: datasource=github-releases depName=X`
+  - `-- renovate: datasource=github-releases depName=X`
 - Track git-refs on main branch in yml/lua files. Examples:
-  - `'# renovate: datasource=git-refs packageName=X'`
-  - `'-- renovate: datasource=git-refs packageName=X'`
+  - `# renovate: datasource=git-refs packageName=X`
+  - `-- renovate: datasource=git-refs packageName=X`
 - Track git-refs on master branch in yml/lua files. Examples:
-  - `'# renovate: datasource=git-refs-master packageName=X'`
-  - `'-- renovate: datasource=git-refs-master packageName=X'`
+  - `# renovate: datasource=git-refs-master packageName=X`
+  - `-- renovate: datasource=git-refs-master packageName=X`
 - Update npm packages in GitHub Action workflow env vars. Example:
-  - `'# renovate: datasource=npm depName=X'`
+  - `# renovate: datasource=npm depName=X`
   - Useful for semantic-release which recommends CI-only installation.
 
 A project can use this configuration by adding the following to its [`renovate.json`](renovate.json):
