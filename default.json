@@ -5,10 +5,10 @@
   "commitBodyTable": true,
   "packageRules": [
     {
-      "description": ["Automerge digest updates directly to main without opening a PR"],
+      "description": ["Automerge digest updates weekly"],
       "matchUpdateTypes": ["digest"],
       "automerge": true,
-      "automergeType": "branch"
+      "schedule": ["before 9am on monday"]
     }
   ],
   "customManagers": [
