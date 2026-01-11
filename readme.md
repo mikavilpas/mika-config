@@ -9,7 +9,7 @@ configuration can be found in [default.test.ts](./default.test.ts).
 
 ### Package Rules
 
-- Automerge digest updates directly to main without opening a PR
+- Automerge digest updates weekly
 
 ### Custom Managers
 
