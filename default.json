@@ -22,7 +22,7 @@
       "datasourceTemplate": "github-releases",
       "managerFilePatterns": ["**/*.yml", "**/*.lua"],
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=github-releases\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+[^:]+:\\s*(?<currentValue>\\S+)",
+        "#\\s*renovate:\\s*datasource=github-releases\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+[^:]+:\\s*\"?(?<currentValue>[^\",\\s]+)\"?",
         "-- renovate: datasource=github-releases depName=(?<depName>[^\\s]+)[\\s\\S]*?version\\s*=\\s*\"?(?<currentValue>[^\",]+)\"?"
       ]
     },
@@ -37,7 +37,7 @@
       "currentValueTemplate": "main",
       "managerFilePatterns": ["**/*.yml", "**/*.lua"],
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=git-refs\\s+packageName=(?<packageName>\\S+)\\s*[\\r\\n]+[^:]+:\\s*(?<currentDigest>\\S+)",
+        "#\\s*renovate:\\s*datasource=git-refs\\s+packageName=(?<packageName>\\S+)\\s*[\\r\\n]+[^:]+:\\s*\"?(?<currentDigest>[^\",\\s]+)\"?",
         "-- renovate: datasource=git-refs packageName=(?<packageName>[^\\s]+)\\s*?commit = \"?(?<currentDigest>[^\",]+)\"?"
       ]
     },
@@ -52,7 +52,7 @@
       "currentValueTemplate": "master",
       "managerFilePatterns": ["**/*.yml", "**/*.lua"],
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=git-refs-master\\s+packageName=(?<packageName>\\S+)\\s*[\\r\\n]+[^:]+:\\s*(?<currentDigest>\\S+)",
+        "#\\s*renovate:\\s*datasource=git-refs-master\\s+packageName=(?<packageName>\\S+)\\s*[\\r\\n]+[^:]+:\\s*\"?(?<currentDigest>[^\",\\s]+)\"?",
         "-- renovate: datasource=git-refs-master packageName=(?<packageName>[^\\s]+)\\s*?commit = \"?(?<currentDigest>[^\",]+)\"?"
       ]
     },
@@ -66,7 +66,7 @@
       "datasourceTemplate": "npm",
       "managerFilePatterns": [".github/workflows/*.yml"],
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=npm\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+\\s*[A-Z_]+:\\s*(?<currentValue>\\S+)"
+        "#\\s*renovate:\\s*datasource=npm\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+\\s*[A-Z_]+:\\s*\"?(?<currentValue>[^\",\\s]+)\"?"
       ]
     }
   ]
