@@ -58,12 +58,25 @@ describe("github-releases custom manager", () => {
     const pattern = getPattern(manager.get(), 0)
 
     it("matches github-releases comment in workflow file", () => {
-      const input = `      - uses: NTBBloodbath/selene-action@23ef05dd5c4d687f4d3c939f76a1c342baf454aa # v1.0.0
-        with:
-          token: \${{ secrets.GITHUB_TOKEN }}
-          args: --display-style=quiet ./lua/ ./spec/
-          # renovate: datasource=github-releases depName=Kampfkarren/selene
-          version: 0.29.0`
+      const input = [
+        "- uses: NTBBloodbath/selene-action@23ef05dd5c4d687f4d3c939f76a1c342baf454aa # v1.0.0",
+        "  with:",
+        `  token: \${{ secrets.GITHUB_TOKEN }}`,
+        "  args: --display-style=quiet ./lua/ ./spec/",
+        "  # renovate: datasource=github-releases depName=Kampfkarren/selene",
+        "  version: 0.29.0",
+      ].join("\n")
+
+      const match = testPattern(pattern, input)
+      assert(match)
+      expect(match.groups?.["depName"]).toBe("Kampfkarren/selene")
+      expect(match.groups?.["currentValue"]).toBe("0.29.0")
+    })
+
+    it("matches with quotes around version", () => {
+      const input = ["# renovate: datasource=github-releases depName=Kampfkarren/selene", 'version: "0.29.0"'].join(
+        "\n"
+      )
 
       const match = testPattern(pattern, input)
       assert(match)
@@ -72,11 +85,14 @@ describe("github-releases custom manager", () => {
     })
 
     it("does not match unrelated content", () => {
-      const input = `name: Test
-on: push
-jobs:
-  test:
-    runs-on: ubuntu-latest`
+      const input = [
+        //
+        "name: Test",
+        "on: push",
+        "jobs:",
+        "  test:",
+        "    runs-on: ubuntu-latest",
+      ].join("\n")
 
       const match = testPattern(pattern, input)
       expect(match).toBeNull()
@@ -87,8 +103,11 @@ jobs:
     const pattern = getPattern(manager.get(), 1)
 
     it("matches github-releases comment in lua file", () => {
-      const input = `  -- renovate: datasource=github-releases depName=folke/lazy.nvim
-  version = "11.14.1"`
+      const input = [
+        //
+        "  -- renovate: datasource=github-releases depName=folke/lazy.nvim",
+        '     version = "11.14.1"',
+      ].join("\n")
 
       const match = testPattern(pattern, input)
       assert(match)
@@ -97,8 +116,11 @@ jobs:
     })
 
     it("matches without quotes around version", () => {
-      const input = `  -- renovate: datasource=github-releases depName=neovim/neovim
-  version = v0.10.0`
+      const input = [
+        //
+        "  -- renovate: datasource=github-releases depName=neovim/neovim",
+        "  version = v0.10.0",
+      ].join("\n")
 
       const match = testPattern(pattern, input)
       assert(match)
@@ -112,12 +134,27 @@ describe("git-refs (main branch) custom manager", () => {
   const manager = new Lazy(() => findManager("git-refs on main"))
 
   describe("yml files", () => {
-    it("matches git-refs comment in workflow file", () => {
-      const pattern = getPattern(manager.get(), 0)
-      const input = `      # renovate: datasource=git-refs packageName=https://github.com/folke/lazy.nvim
-      commit: abc123def456`
+    const pattern = new Lazy(() => getPattern(manager.get(), 0))
 
-      const match = testPattern(pattern, input)
+    it("matches git-refs comment in workflow file", () => {
+      const input = [
+        "# renovate: datasource=git-refs packageName=https://github.com/folke/lazy.nvim",
+        "commit: abc123def456",
+      ].join("\n")
+
+      const match = testPattern(pattern.get(), input)
+      assert(match)
+      expect(match.groups?.["packageName"]).toBe("https://github.com/folke/lazy.nvim")
+      expect(match.groups?.["currentDigest"]).toBe("abc123def456")
+    })
+
+    it("matches with quotes around commit", () => {
+      const input = [
+        "# renovate: datasource=git-refs packageName=https://github.com/folke/lazy.nvim",
+        'commit: "abc123def456"',
+      ].join("\n")
+
+      const match = testPattern(pattern.get(), input)
       assert(match)
       expect(match.groups?.["packageName"]).toBe("https://github.com/folke/lazy.nvim")
       expect(match.groups?.["currentDigest"]).toBe("abc123def456")
@@ -128,8 +165,10 @@ describe("git-refs (main branch) custom manager", () => {
     const pattern = new Lazy(() => getPattern(manager.get(), 1))
 
     it("matches git-refs comment in lua file", () => {
-      const input = `  -- renovate: datasource=git-refs packageName=https://github.com/MagicDuck/grug-far.nvim
-  commit = "abc123def456"`
+      const input = [
+        "-- renovate: datasource=git-refs packageName=https://github.com/MagicDuck/grug-far.nvim",
+        'commit = "abc123def456"',
+      ].join("\n")
 
       const match = testPattern(pattern.get(), input)
       assert(match)
@@ -138,8 +177,10 @@ describe("git-refs (main branch) custom manager", () => {
     })
 
     it("matches without quotes around commit", () => {
-      const input = `  -- renovate: datasource=git-refs packageName=https://github.com/some/repo
-  commit = abc123`
+      const input = [
+        "-- renovate: datasource=git-refs packageName=https://github.com/some/repo",
+        "commit = abc123",
+      ].join("\n")
 
       const match = testPattern(pattern.get(), input)
       assert(match)
@@ -153,12 +194,27 @@ describe("git-refs-master (master branch) custom manager", () => {
   const manager = new Lazy(() => findManager("git-refs on master"))
 
   describe("yml files", () => {
-    it("matches git-refs-master comment in workflow file", () => {
-      const pattern = getPattern(manager.get(), 0)
-      const input = `      # renovate: datasource=git-refs-master packageName=https://github.com/some/legacy-repo
-      commit: def789`
+    const pattern = new Lazy(() => getPattern(manager.get(), 0))
 
-      const match = testPattern(pattern, input)
+    it("matches git-refs-master comment in workflow file", () => {
+      const input = [
+        "# renovate: datasource=git-refs-master packageName=https://github.com/some/legacy-repo",
+        "commit: def789",
+      ].join("\n")
+
+      const match = testPattern(pattern.get(), input)
+      assert(match)
+      expect(match.groups?.["packageName"]).toBe("https://github.com/some/legacy-repo")
+      expect(match.groups?.["currentDigest"]).toBe("def789")
+    })
+
+    it("matches with quotes around commit", () => {
+      const input = [
+        "# renovate: datasource=git-refs-master packageName=https://github.com/some/legacy-repo",
+        'commit: "def789"',
+      ].join("\n")
+
+      const match = testPattern(pattern.get(), input)
       assert(match)
       expect(match.groups?.["packageName"]).toBe("https://github.com/some/legacy-repo")
       expect(match.groups?.["currentDigest"]).toBe("def789")
@@ -168,8 +224,10 @@ describe("git-refs-master (master branch) custom manager", () => {
   describe("lua files", () => {
     it("matches git-refs-master comment in lua file", () => {
       const pattern = getPattern(manager.get(), 1)
-      const input = `  -- renovate: datasource=git-refs-master packageName=https://github.com/old/plugin
-  commit = "xyz789"`
+      const input = [
+        "-- renovate: datasource=git-refs-master packageName=https://github.com/old/plugin",
+        'commit = "xyz789"',
+      ].join("\n")
 
       const match = testPattern(pattern, input)
       assert(match)
@@ -184,11 +242,13 @@ describe("npm packages in workflow env vars custom manager", () => {
   const pattern = new Lazy(() => getPattern(manager.get(), 0))
 
   it("matches semantic-release version in env var", () => {
-    const input = `      env:
-        GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: \${{ secrets.NPM_TOKEN }}
-        # renovate: datasource=npm depName=semantic-release
-        SEMANTIC_RELEASE_VERSION: 25.0.2`
+    const input = [
+      "env:",
+      "  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}",
+      "  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}",
+      "  # renovate: datasource=npm depName=semantic-release",
+      "  SEMANTIC_RELEASE_VERSION: 25.0.2",
+    ].join("\n")
 
     const match = testPattern(pattern.get(), input)
     assert(match)
@@ -197,8 +257,24 @@ describe("npm packages in workflow env vars custom manager", () => {
   })
 
   it("matches any npm package in env var", () => {
-    const input = `      # renovate: datasource=npm depName=@semantic-release/changelog
-        CHANGELOG_VERSION: 6.0.3`
+    const input = [
+      //
+      "# renovate: datasource=npm depName=@semantic-release/changelog",
+      "CHANGELOG_VERSION: 6.0.3",
+    ].join("\n")
+
+    const match = testPattern(pattern.get(), input)
+    assert(match)
+    expect(match.groups?.["depName"]).toBe("@semantic-release/changelog")
+    expect(match.groups?.["currentValue"]).toBe("6.0.3")
+  })
+
+  it("matches any npm package in env var with quotes", () => {
+    const input = [
+      //
+      "# renovate: datasource=npm depName=@semantic-release/changelog",
+      'CHANGELOG_VERSION: "6.0.3"',
+    ].join("\n")
 
     const match = testPattern(pattern.get(), input)
     assert(match)
@@ -207,8 +283,11 @@ describe("npm packages in workflow env vars custom manager", () => {
   })
 
   it("does not match without renovate comment", () => {
-    const input = `      env:
-        SOME_VERSION: 1.2.3`
+    const input = [
+      //
+      "env:",
+      "  SOME_VERSION: 1.2.3`",
+    ].join("\n")
 
     const match = testPattern(pattern.get(), input)
     expect(match).toBeNull()
