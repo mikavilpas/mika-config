@@ -241,6 +241,11 @@ describe("npm packages in workflow env vars custom manager", () => {
   const manager = new Lazy(() => findManager("npm packages in GitHub Action"))
   const pattern = new Lazy(() => getPattern(manager.get(), 0))
 
+  it("is the only pattern for this manager", () => {
+    // if this fails, more tests may be needed
+    expect(manager.get().matchStrings.length).toBe(1)
+  })
+
   it("matches semantic-release version in env var", () => {
     const input = [
       "env:",
