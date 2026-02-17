@@ -68,6 +68,20 @@
       "matchStrings": [
         "#\\s*renovate:\\s*datasource=npm\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+\\s*[A-Z_]+:\\s*\"?(?<currentValue>[^\",\\s]+)\"?"
       ]
+    },
+    {
+      "description": [
+        "Update crate versions in toml files. Example:",
+        "- `# renovate: datasource=crate depName=bacon`",
+        "- `\"cargo:bacon\" = \"3.22.0\"`",
+        "Useful for cargo tools in mise config where the built-in mise manager doesn't update cargo: backend tools."
+      ],
+      "customType": "regex",
+      "datasourceTemplate": "crate",
+      "managerFilePatterns": ["**/*.toml"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=crate\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+[^=]+=\\s*\"?(?<currentValue>[^\",\\s]+)\"?"
+      ]
     }
   ]
 }
