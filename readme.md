@@ -22,6 +22,10 @@ configuration can be found in [default.test.ts](./default.test.ts).
 - Track git-refs on master branch in yml/lua files. Examples:
   - `# renovate: datasource=git-refs-master packageName=X`
   - `-- renovate: datasource=git-refs-master packageName=X`
+- Update crate versions in toml files. Example:
+  - `# renovate: datasource=crate depName=bacon`
+  - `"cargo:bacon" = "3.22.0"`
+  - Useful for cargo tools in mise config where the built-in mise manager doesn't update cargo: backend tools.
 - Update npm packages in GitHub Action workflow env vars. Example:
   - `# renovate: datasource=npm depName=X`
   - Useful for semantic-release which recommends CI-only installation.

@@ -237,6 +237,48 @@ describe("git-refs-master (master branch) custom manager", () => {
   })
 })
 
+describe("crate versions in toml files custom manager", () => {
+  const manager = new Lazy(() => findManager("crate versions in toml"))
+  const pattern = new Lazy(() => getPattern(manager.get(), 0))
+
+  it("is the only pattern for this manager", () => {
+    expect(manager.get().matchStrings.length).toBe(1)
+  })
+
+  it("matches cargo tool in mise config", () => {
+    const input = [
+      //
+      "# renovate: datasource=crate depName=bacon",
+      '"cargo:bacon" = "3.22.0"',
+    ].join("\n")
+
+    const match = testPattern(pattern.get(), input)
+    assert(match)
+    expect(match.groups?.["depName"]).toBe("bacon")
+    expect(match.groups?.["currentValue"]).toBe("3.22.0")
+  })
+
+  it("matches cargo tool with hyphenated name", () => {
+    const input = [
+      //
+      "# renovate: datasource=crate depName=cargo-nextest",
+      '"cargo:cargo-nextest" = "0.9.117"',
+    ].join("\n")
+
+    const match = testPattern(pattern.get(), input)
+    assert(match)
+    expect(match.groups?.["depName"]).toBe("cargo-nextest")
+    expect(match.groups?.["currentValue"]).toBe("0.9.117")
+  })
+
+  it("does not match without renovate comment", () => {
+    const input = '"cargo:bacon" = "3.22.0"'
+
+    const match = testPattern(pattern.get(), input)
+    expect(match).toBeNull()
+  })
+})
+
 describe("npm packages in workflow env vars custom manager", () => {
   const manager = new Lazy(() => findManager("npm packages in GitHub Action"))
   const pattern = new Lazy(() => getPattern(manager.get(), 0))
