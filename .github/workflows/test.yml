@@ -31,4 +31,4 @@ jobs:
           default.json
         env:
           # renovate: datasource=npm depName=renovate
-          RENOVATE_VERSION: "43.59.5"
+          RENOVATE_VERSION: "43.60.0"
