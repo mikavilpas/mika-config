@@ -10,14 +10,14 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@types/node": "25.4.0",
+    "@types/node": "25.5.0",
     "eslint": "10.0.3",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-import-x": "4.16.2",
     "eslint-plugin-no-only-tests": "3.3.0",
-    "eslint-plugin-oxlint": "1.54.0",
-    "oxlint": "1.54.0",
+    "eslint-plugin-oxlint": "1.55.0",
+    "oxlint": "1.55.0",
     "oxlint-tsgolint": "0.16.0",
     "prettier": "3.8.1",
     "prettier-plugin-organize-imports": "4.3.0",
@@ -25,7 +25,7 @@
     "re2": "1.23.3",
     "typescript": "5.9.3",
     "typescript-eslint": "8.57.0",
-    "vitest": "4.0.18"
+    "vitest": "4.1.0"
   },
   "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
   "pnpm": {
