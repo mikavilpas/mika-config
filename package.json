@@ -16,7 +16,7 @@
     "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-import-x": "4.16.2",
     "eslint-plugin-no-only-tests": "3.3.0",
-    "eslint-plugin-oxlint": "1.59.0",
+    "eslint-plugin-oxlint": "1.60.0",
     "oxlint": "1.60.0",
     "oxlint-tsgolint": "0.20.0",
     "prettier": "3.8.2",
@@ -24,7 +24,7 @@
     "prettier-plugin-packagejson": "3.0.2",
     "re2": "1.24.0",
     "typescript": "6.0.2",
-    "typescript-eslint": "8.58.1",
+    "typescript-eslint": "8.58.2",
     "vitest": "4.1.4"
   },
   "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
