@@ -26,6 +26,10 @@ configuration can be found in [default.test.ts](./default.test.ts).
   - `# renovate: datasource=crate depName=bacon`
   - `"cargo:bacon" = "3.22.0"`
   - Useful for cargo tools in mise config where the built-in mise manager doesn't update cargo: backend tools.
+- Update npm packages in toml files. Example:
+  - `# renovate: datasource=npm depName=@anthropic-ai/claude-code`
+  - `"aqua:anthropics/claude-code" = "2.1.117"`
+  - Useful for aqua tools whose registry uses http package type, which the built-in mise manager doesn't support.
 - Update npm packages in GitHub Action workflow env vars. Example:
   - `# renovate: datasource=npm depName=X`
   - Useful for semantic-release which recommends CI-only installation.

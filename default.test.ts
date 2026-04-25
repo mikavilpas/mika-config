@@ -279,6 +279,48 @@ describe("crate versions in toml files custom manager", () => {
   })
 })
 
+describe("npm packages in toml files custom manager", () => {
+  const manager = new Lazy(() => findManager("npm packages in toml"))
+  const pattern = new Lazy(() => getPattern(manager.get(), 0))
+
+  it("is the only pattern for this manager", () => {
+    expect(manager.get().matchStrings.length).toBe(1)
+  })
+
+  it("matches aqua tool in mise config", () => {
+    const input = [
+      //
+      "# renovate: datasource=npm depName=@anthropic-ai/claude-code",
+      '"aqua:anthropics/claude-code" = "2.1.117"',
+    ].join("\n")
+
+    const match = testPattern(pattern.get(), input)
+    assert(match)
+    expect(match.groups?.["depName"]).toBe("@anthropic-ai/claude-code")
+    expect(match.groups?.["currentValue"]).toBe("2.1.117")
+  })
+
+  it("matches unscoped npm package", () => {
+    const input = [
+      //
+      "# renovate: datasource=npm depName=oxlint",
+      '"npm:oxlint" = "1.61.0"',
+    ].join("\n")
+
+    const match = testPattern(pattern.get(), input)
+    assert(match)
+    expect(match.groups?.["depName"]).toBe("oxlint")
+    expect(match.groups?.["currentValue"]).toBe("1.61.0")
+  })
+
+  it("does not match without renovate comment", () => {
+    const input = '"aqua:anthropics/claude-code" = "2.1.117"'
+
+    const match = testPattern(pattern.get(), input)
+    expect(match).toBeNull()
+  })
+})
+
 describe("npm packages in workflow env vars custom manager", () => {
   const manager = new Lazy(() => findManager("npm packages in GitHub Action"))
   const pattern = new Lazy(() => getPattern(manager.get(), 0))
