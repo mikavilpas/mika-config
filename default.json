@@ -82,6 +82,20 @@
       "matchStrings": [
         "#\\s*renovate:\\s*datasource=crate\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+[^=]+=\\s*\"?(?<currentValue>[^\",\\s]+)\"?"
       ]
+    },
+    {
+      "description": [
+        "Update npm packages in toml files. Example:",
+        "- `# renovate: datasource=npm depName=@anthropic-ai/claude-code`",
+        "- `\"aqua:anthropics/claude-code\" = \"2.1.117\"`",
+        "Useful for aqua tools whose registry uses http package type, which the built-in mise manager doesn't support."
+      ],
+      "customType": "regex",
+      "datasourceTemplate": "npm",
+      "managerFilePatterns": ["**/*.toml"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=npm\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+[^=]+=\\s*\"?(?<currentValue>[^\",\\s]+)\"?"
+      ]
     }
   ]
 }
