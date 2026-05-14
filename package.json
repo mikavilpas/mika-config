@@ -10,14 +10,14 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@types/node": "25.6.2",
+    "@types/node": "25.7.0",
     "eslint": "10.3.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-import-x": "4.16.2",
     "eslint-plugin-no-only-tests": "3.4.0",
-    "eslint-plugin-oxlint": "1.63.0",
-    "oxlint": "1.63.0",
+    "eslint-plugin-oxlint": "1.64.0",
+    "oxlint": "1.64.0",
     "oxlint-tsgolint": "0.22.1",
     "prettier": "3.8.3",
     "prettier-plugin-organize-imports": "4.3.0",
