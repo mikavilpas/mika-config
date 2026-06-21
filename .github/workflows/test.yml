@@ -38,4 +38,4 @@ jobs:
           renovate-config-validator renovate.json default.json
         env:
           # renovate: datasource=npm depName=renovate
-          RENOVATE_VERSION: "43.228.1"
+          RENOVATE_VERSION: "43.229.1"
