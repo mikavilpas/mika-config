@@ -71,6 +71,18 @@
     },
     {
       "description": [
+        "Update git tag versions in yml files such as GitHub actions and workflows. Example:",
+        "- `# renovate: datasource=git-tags packageName=X`"
+      ],
+      "customType": "regex",
+      "datasourceTemplate": "git-tags",
+      "managerFilePatterns": ["**/*.yml"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=git-tags\\s+packageName=(?<packageName>\\S+)\\s*[\\r\\n]+\\s*\\w+:\\s*\"?(?<currentValue>[^\",\\s]+)\"?"
+      ]
+    },
+    {
+      "description": [
         "Update crate versions in toml files. Example:",
         "- `# renovate: datasource=crate depName=bacon`",
         "- `\"cargo:bacon\" = \"3.22.0\"`",

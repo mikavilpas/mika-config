@@ -33,6 +33,8 @@ configuration can be found in [default.test.ts](./default.test.ts).
 - Update npm packages in GitHub Action workflow env vars. Example:
   - `# renovate: datasource=npm depName=X`
   - Useful for semantic-release which recommends CI-only installation.
+- Update git tag versions in yml files such as GitHub actions and workflows. Example:
+  - `# renovate: datasource=git-tags packageName=X`
 
 A project can use this configuration by adding the following to its [`renovate.json`](renovate.json):
 
