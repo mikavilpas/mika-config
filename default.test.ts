@@ -382,3 +382,20 @@ describe("npm packages in workflow env vars custom manager", () => {
     expect(match).toBeNull()
   })
 })
+
+describe("git-tags in yml files", () => {
+  const pattern = getPattern(findManager("git-tags"), 0)
+
+  it("matches a git-tags magic comment in workflow file", () => {
+    const input = [
+      "# renovate: datasource=git-tags packageName=https://github.com/folke/lazy.nvim",
+      "version: v11.14.1",
+    ].join("\n")
+
+    const match = testPattern(pattern, input)
+
+    assert(match)
+    expect(match.groups?.["packageName"]).toBe("https://github.com/folke/lazy.nvim")
+    expect(match.groups?.["currentValue"]).toBe("v11.14.1")
+  })
+})
