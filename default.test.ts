@@ -325,9 +325,8 @@ describe("npm packages in workflow env vars custom manager", () => {
   const manager = new Lazy(() => findManager("npm packages in GitHub Action"))
   const pattern = new Lazy(() => getPattern(manager.get(), 0))
 
-  it("is the only pattern for this manager", () => {
-    // if this fails, more tests may be needed
-    expect(manager.get().matchStrings.length).toBe(1)
+  it("there are two patterns for this manager", () => {
+    expect(manager.get().matchStrings.length).toBe(2)
   })
 
   it("matches semantic-release version in env var", () => {
@@ -380,6 +379,19 @@ describe("npm packages in workflow env vars custom manager", () => {
 
     const match = testPattern(pattern.get(), input)
     expect(match).toBeNull()
+  })
+
+  it("matches in lua files", () => {
+    const luaPattern = getPattern(manager.get(), 1)
+
+    const input = [
+      //
+      "-- renovate: datasource=npm depName=oxfmt",
+      'version = "v2.31.0",',
+    ].join("\n")
+
+    const match = testPattern(luaPattern, input)
+    assert(match)
   })
 })
 
