@@ -64,9 +64,10 @@
       ],
       "customType": "regex",
       "datasourceTemplate": "npm",
-      "managerFilePatterns": [".github/workflows/*.yml"],
+      "managerFilePatterns": [".github/workflows/*.yml", "**/*.lua"],
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=npm\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+\\s*[A-Z_]+:\\s*\"?(?<currentValue>[^\",\\s]+)\"?"
+        "#\\s*renovate:\\s*datasource=npm\\s+depName=(?<depName>\\S+)\\s*[\\r\\n]+\\s*[A-Z_]+:\\s*\"?(?<currentValue>[^\",\\s]+)\"?",
+        "-- renovate: datasource=npm depName=(?<depName>\\S+).*?\"?(?<currentValue>[^\",\\s]+)\"?"
       ]
     },
     {
