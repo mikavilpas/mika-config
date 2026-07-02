@@ -24,7 +24,7 @@
     "prettier-plugin-packagejson": "3.0.2",
     "re2": "1.25.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.62.0",
+    "typescript-eslint": "8.62.1",
     "vitest": "4.1.9"
   },
   "packageManager": "pnpm@11.9.0",
