@@ -1,16 +1,16 @@
 export class Lazy<T> {
   private value?: T
 
-  constructor(private readonly factory: () => T) {}
+  public constructor(private readonly factory: () => T) {}
 
-  get(): T {
-    if (this.value === undefined) {
+  public get(): T {
+    if (typeof this.value === "undefined") {
       this.value = this.factory()
     }
     return this.value
   }
 
-  set(value: T): void {
+  public set(value: T): void {
     this.value = value
   }
 }
