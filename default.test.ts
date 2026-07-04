@@ -1,7 +1,9 @@
 import assert from "assert"
 import { readFileSync } from "fs"
+
 import RE2 from "re2"
 import { describe, expect, it } from "vitest"
+
 import config from "./default.json" with { type: "json" }
 import { Lazy } from "./Lazy.js"
 
