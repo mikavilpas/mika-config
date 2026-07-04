@@ -1,15 +1,85 @@
 {
-  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
-  "plugins": ["typescript", "import", "unicorn"],
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "import"],
+  "jsPlugins": [
+    // https://github.com/levibuzolic/eslint-plugin-no-only-tests#oxlint
+    "eslint-plugin-no-only-tests"
+  ],
   "categories": {
-    "correctness": "warn"
+    "correctness": "error",
+    "perf": "warn",
+    "suspicious": "warn",
+    "restriction": "warn"
   },
   "env": {
     "builtin": true,
     "es2026": true
   },
-  "ignorePatterns": ["eslint.config.mjs"],
+  "ignorePatterns": [
+    "**/vite.config.js",
+    "**/cypress.config.ts",
+    "**/test-environment/",
+    "dist/",
+    "cypress/support/tui-sandbox.ts"
+  ],
   "rules": {
+    "no-only-tests/no-only-tests": "error",
+    "prefer-const": "error",
+    "unified-signatures": "error",
+    "no-useless-assignment": "error",
+    "for-direction": "error",
+    "no-relative-parent-imports": "off",
+    "no-async-promise-executor": "error",
+    "no-case-declarations": "error",
+    "no-class-assign": "error",
+    "no-compare-neg-zero": "error",
+    "no-cond-assign": "error",
+    "no-const-assign": "error",
+    "no-constant-binary-expression": "error",
+    "no-constant-condition": "error",
+    "no-control-regex": "error",
+    "no-debugger": "error",
+    "no-delete-var": "error",
+    "no-dupe-class-members": "error",
+    "no-dupe-else-if": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-empty": "error",
+    "no-empty-character-class": "error",
+    "no-empty-pattern": "error",
+    "no-empty-static-block": "error",
+    "no-ex-assign": "error",
+    "no-extra-boolean-cast": "error",
+    "no-fallthrough": "error",
+    "no-func-assign": "error",
+    "no-global-assign": "error",
+    "no-import-assign": "error",
+    "no-invalid-regexp": "error",
+    "no-irregular-whitespace": "error",
+    "no-loss-of-precision": "error",
+    "no-new-native-nonconstructor": "error",
+    "no-nonoctal-decimal-escape": "error",
+    "no-obj-calls": "error",
+    "no-prototype-builtins": "error",
+    "no-redeclare": "error",
+    "no-regex-spaces": "error",
+    "no-self-assign": "error",
+    "no-setter-return": "error",
+    "no-shadow-restricted-names": "error",
+    "no-sparse-arrays": "error",
+    "no-this-before-super": "error",
+    "no-unsafe-finally": "error",
+    "no-unsafe-negation": "error",
+    "no-unsafe-optional-chaining": "error",
+    "no-unused-labels": "error",
+    "no-unused-private-class-members": "error",
+    "no-useless-backreference": "error",
+    "no-useless-catch": "error",
+    "no-useless-escape": "error",
+    "no-with": "error",
+    "require-yield": "error",
+    "use-isnan": "error",
+    "valid-typeof": "error",
     "@typescript-eslint/ban-ts-comment": [
       "error",
       {
@@ -90,11 +160,6 @@
     "@typescript-eslint/return-await": "error",
     "@typescript-eslint/unbound-method": "error",
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
-    "import-x/namespace": "error",
-    "import-x/default": "error",
-    "import-x/no-named-as-default": "warn",
-    "import-x/no-named-as-default-member": "warn",
-    "import-x/no-duplicates": "warn",
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-import-type-side-effects": "error",
     "@typescript-eslint/explicit-module-boundary-types": ["warn"],
@@ -109,8 +174,7 @@
       {
         "allowAsStatement": true
       }
-    ],
-    "typescript/switch-exhaustiveness-check": "warn"
+    ]
   },
   "overrides": [
     {
@@ -132,6 +196,35 @@
         "no-with": "off",
         "prefer-rest-params": "error",
         "prefer-spread": "error"
+      }
+    },
+    {
+      "files": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+      "rules": {
+        "no-class-assign": "off",
+        "no-const-assign": "off",
+        "no-dupe-class-members": "off",
+        "no-dupe-keys": "off",
+        "no-func-assign": "off",
+        "no-import-assign": "off",
+        "no-new-native-nonconstructor": "off",
+        "no-obj-calls": "off",
+        "no-redeclare": "off",
+        "no-setter-return": "off",
+        "no-this-before-super": "off",
+        "no-unsafe-negation": "off",
+        "no-var": "error",
+        "no-with": "off",
+        "prefer-rest-params": "error",
+        "prefer-spread": "error"
+      }
+    },
+    {
+      "files": ["cypress/e2e/*.cy.ts", "cypress/support/commands.ts"],
+      // cypress knows how to import its own files
+      "rules": {
+        "import/unambiguous": "allow",
+        "prefer-node-protocol": "allow"
       }
     }
   ]

@@ -1,5 +1,5 @@
-import assert from "assert"
-import { readFileSync } from "fs"
+import assert from "node:assert"
+import { readFileSync } from "node:fs"
 
 import RE2 from "re2"
 import { describe, expect, it } from "vitest"
@@ -7,11 +7,11 @@ import { describe, expect, it } from "vitest"
 import config from "./default.json" with { type: "json" }
 import { Lazy } from "./Lazy.js"
 
+// Normalize whitespace to handle oxfmt line wrapping
+const normalizeWhitespace = (text: string): string => text.replace(/\s+/g, " ").trim()
+
 describe("README documentation", () => {
   const readme = readFileSync("readme.md", "utf-8")
-
-  // Normalize whitespace to handle prettier line wrapping
-  const normalizeWhitespace = (text: string): string => text.replace(/\s+/g, " ").trim()
 
   it("documents all features from default.json", () => {
     const allDescriptions: string[] = config.packageRules
