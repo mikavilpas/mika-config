@@ -1,11 +1,30 @@
 {
   "name": "@mikavilpas/oxfmt-config",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "description": "The oxfmt config Mika Vilpas uses in personal projects.",
+  "keywords": [
+    "config",
+    "formatter",
+    "oxfmt"
+  ],
+  "homepage": "https://github.com/mikavilpas/mika-config/tree/main/packages/oxfmt-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikavilpas/mika-config.git",
+    "directory": "packages/oxfmt-config"
+  },
+  "files": [
+    ".oxfmtrc.json",
+    "README.md"
+  ],
   "type": "module",
   "exports": {
     ".": {
       "import": "./.oxfmtrc.json"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
