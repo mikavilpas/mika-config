@@ -9,6 +9,7 @@
     "test": "vitest"
   },
   "devDependencies": {
+    "@mikavilpas/oxfmt-config": "workspace:*",
     "@types/node": "25.9.5",
     "eslint-plugin-no-only-tests": "3.4.0",
     "oxfmt": "0.59.0",

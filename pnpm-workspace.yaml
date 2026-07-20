@@ -1,4 +1,8 @@
 allowBuilds:
   re2: true
   unrs-resolver: true
-onlyBuiltDependencies: '["re2", "esbuild"]'
+onlyBuiltDependencies: ["re2", "esbuild"]
+packages:
+  - "packages/*"
+catalog:
+  oxfmt: 0.59.0
