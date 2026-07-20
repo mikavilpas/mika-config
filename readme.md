@@ -1,6 +1,10 @@
 # mika-config
 
-This repository contains shared renovate configuration for my projects.
+This repository contains
+
+- the shared [renovate configuration](./default.json) for my projects
+- [oxfmt-config](packages/oxfmt-config) for the [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) code formatter,
+  released as an [npm package](https://www.npmjs.com/package/@mikavilpas/oxfmt-config)
 
 ## Features
 
