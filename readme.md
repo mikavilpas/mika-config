@@ -1,4 +1,4 @@
-# mika-renovate
+# mika-config
 
 This repository contains shared renovate configuration for my projects.
 
@@ -41,6 +41,6 @@ A project can use this configuration by adding the following to its [`renovate.j
 ```json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["local>mikavilpas/mika-renovate"]
+  "extends": ["local>mikavilpas/mika-config"]
 }
 ```
