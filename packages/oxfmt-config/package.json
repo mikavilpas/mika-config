@@ -1,0 +1,17 @@
+{
+  "name": "@mikavilpas/oxfmt-config",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./.oxfmtrc.json"
+    }
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
+    "oxfmt": "catalog:"
+  },
+  "peerDependencies": {
+    "oxfmt": "^0.59.0"
+  }
+}
