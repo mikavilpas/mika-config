@@ -34,12 +34,12 @@ jobs:
       # required checks pass; the resulting push to main then publishes any bumped
       # package. Checks still gate it, so a failure complains up front.
       - name: Enable auto-merge on the release PR
-        if: ${{ steps.release.outputs.pr }}
+        if: ${{ steps.release.outputs.prs_created == 'true' }}
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          PR_NUMBER: ${{ fromJSON(steps.release.outputs.pr).number }}
+          PR_NUMBER: ${{ steps.release.outputs.pr && fromJSON(steps.release.outputs.pr).number || '' }}
         run: >
-          gh pr merge "$PR_NUMBER" --auto --squash --repo "${{ github.repository }}"
+          gh pr merge "$PR_NUMBER" --auto --squash --repo "$GITHUB_REPOSITORY"
 
   publish-to-npm:
     name: Publish to npm
