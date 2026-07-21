@@ -7,7 +7,7 @@ const config: OxfmtConfig = defineConfig({
   proseWrap: "always",
   semi: false,
   singleQuote: false,
-  trailingComma: "es5",
+  trailingComma: "all",
   sortImports: true,
   sortPackageJson: {},
 })

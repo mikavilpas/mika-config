@@ -77,7 +77,7 @@ describe("github-releases custom manager", () => {
 
     it("matches with quotes around version", () => {
       const input = ["# renovate: datasource=github-releases depName=Kampfkarren/selene", 'version: "0.29.0"'].join(
-        "\n"
+        "\n",
       )
 
       const match = testPattern(pattern, input)
