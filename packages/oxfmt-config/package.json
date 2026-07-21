@@ -29,7 +29,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc && attw --pack"
+    "build": "tsc && attw --pack",
+    "prepack": "tsc"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
