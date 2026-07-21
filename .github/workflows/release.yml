@@ -60,6 +60,6 @@ jobs:
         if: steps.changesets.outputs.pullRequestNumber
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          STEPS_CHANGESETS_OUTPUTS_PULLREQUESTNUMBER: ${{ steps.changesets.outputs.pullRequestNumber }}
         run: >
-          gh pr merge "${{ steps.changesets.outputs.pullRequestNumber }}" --auto --squash --repo "${{ github.repository
-          }}"
+          gh pr merge "${STEPS_CHANGESETS_OUTPUTS_PULLREQUESTNUMBER}" --auto --squash --repo "${{ github.repository }}"
