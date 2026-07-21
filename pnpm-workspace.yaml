@@ -3,6 +3,9 @@ allowBuilds:
   unrs-resolver: true
 onlyBuiltDependencies: ["re2", "esbuild"]
 packages:
+  # tracked by changesets so renovate config changes get versioned (private,
+  # not published) for my own tracking
+  - "."
   # packages published to npmjs.org
   - "packages/*"
 catalog:
