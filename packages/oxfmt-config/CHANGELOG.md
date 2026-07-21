@@ -1,5 +1,11 @@
 # @mikavilpas/oxfmt-config
 
+## 3.0.0
+
+### Major Changes
+
+- [#619](https://github.com/mikavilpas/mika-config/pull/619) [`dafdf94`](https://github.com/mikavilpas/mika-config/commit/dafdf942cd69708c727b9ddcfaad08b1f9c972aa) Thanks [@mikavilpas](https://github.com/mikavilpas)! - always add a trailingComma
+
 ## 2.0.1
 
 ### Patch Changes
