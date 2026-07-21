@@ -1,5 +1,11 @@
 # @mikavilpas/oxfmt-config
 
+## 2.0.1
+
+### Patch Changes
+
+- [#617](https://github.com/mikavilpas/mika-config/pull/617) [`b84af69`](https://github.com/mikavilpas/mika-config/commit/b84af69170b1195b77d32647475f6eaa7ba81dda) Thanks [@mikavilpas](https://github.com/mikavilpas)! - fix the released package missing its contents
+
 ## 2.0.0
 
 ### Major Changes
