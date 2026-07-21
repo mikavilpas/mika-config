@@ -1,5 +1,8 @@
-import packageConfig from "@mikavilpas/oxfmt-config" with { type: "json" }
+import packageConfig from "@mikavilpas/oxfmt-config"
+import { defineConfig } from "oxfmt"
 
-packageConfig.ignorePatterns.push("CHANGELOG.md")
 // oxlint-disable-next-line import/no-default-export
-export default packageConfig
+export default defineConfig({
+  ...packageConfig,
+  ignorePatterns: ["CHANGELOG.md"],
+})

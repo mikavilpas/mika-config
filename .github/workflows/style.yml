@@ -25,4 +25,6 @@ jobs:
           node-version-file: .nvmrc
           cache: "pnpm"
       - run: pnpm install
+      - run: pnpm build
+        working-directory: packages/oxfmt-config/
       - run: pnpm oxfmt --check

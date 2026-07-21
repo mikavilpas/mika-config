@@ -14,17 +14,22 @@
     "directory": "packages/oxfmt-config"
   },
   "files": [
+    "dist",
     ".oxfmtrc.json",
     "README.md"
   ],
   "type": "module",
   "exports": {
     ".": {
-      "import": "./.oxfmtrc.json"
+      "types": "./dist/oxfmt.config.d.ts",
+      "import": "./dist/oxfmt.config.js"
     }
   },
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "build": "tsc && attw --pack"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
