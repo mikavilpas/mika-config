@@ -24,4 +24,5 @@ jobs:
           cache: "pnpm"
       - run: pnpm install
       - run: pnpm build
+        working-directory: packages/oxfmt-config/
       - run: pnpm run lint

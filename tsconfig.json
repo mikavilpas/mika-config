@@ -13,13 +13,16 @@
     "lib": ["ES2024"],
     "types": ["node"],
     "resolveJsonModule": true,
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-
+  "references": [
+    {
+      "path": "packages/oxfmt-config"
+    }
+  ],
   "include": ["./*.ts"]
 }
