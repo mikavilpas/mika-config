@@ -3,7 +3,6 @@
   "packages": {
     ".": {
       "release-type": "simple",
-      "component": "renovate-config",
       "include-component-in-tag": false
     },
     "packages/oxfmt-config": {
