@@ -1,22 +1,20 @@
 ---
 name: Release
 on:
+  workflow_dispatch: # allow running the workflow manually
   push:
     branches:
       - main
 
-# Never run two releases against the same branch at once (avoids double publishes)
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   contents: read
 
 jobs:
-  release:
-    name: Release
+  release-please:
+    name: Release Please
     runs-on: ubuntu-24.04
-    permissions:
-      id-token: write # npm OIDC trusted publishing (no NPM_TOKEN needed)
     steps:
       - name: Mint a release-bot installation token
         id: app-token
@@ -24,13 +22,35 @@ jobs:
         with:
           app-id: ${{ secrets.RELEASE_BOT_APP_ID }}
           private-key: ${{ secrets.RELEASE_BOT_PRIVATE_KEY }}
-          permission-contents: write # push the Version PR branch, tags, and GitHub releases
-          permission-pull-requests: write # open/update the "Version Packages" PR
+          permission-contents: write # create release tags + GitHub releases
+          permission-pull-requests: write # open/update the release PR
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0
+        id: release
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+      # Solo project: no manual approval. Let the release PR merge itself once the
+      # required checks pass; the resulting push to main then publishes any bumped
+      # package. Checks still gate it, so a failure complains up front.
+      - name: Enable auto-merge on the release PR
+        if: ${{ steps.release.outputs.pr }}
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PR_NUMBER: ${{ fromJSON(steps.release.outputs.pr).number }}
+        run: >
+          gh pr merge "$PR_NUMBER" --auto --squash --repo "${{ github.repository }}"
+
+  publish-to-npm:
+    name: Publish to npm
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write # npm OIDC trusted publishing (no NPM_TOKEN needed)
+    steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 0
-          token: ${{ steps.app-token.outputs.token }}
-          persist-credentials: true # changesets pushes the Version PR branch with this token
+          persist-credentials: false
       - uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
         with:
           run_install: false
@@ -40,10 +60,16 @@ jobs:
           cache: "pnpm"
           registry-url: https://registry.npmjs.org
       - run: pnpm install
-      - name: Create Version PR or publish
-        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
-        with:
-          version: pnpm changeset version
-          publish: pnpm changeset publish
-        env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+      # Runs on every push to main but only actually publishes when the version in
+      # package.json (bumped by a merged release PR) differs from what is on npm.
+      - name: Publish @mikavilpas/oxfmt-config if the version changed
+        shell: bash
+        run: |
+          npm_version=$(pnpm show @mikavilpas/oxfmt-config version 2>/dev/null || echo "none")
+          local_version=$(node --print "require('./packages/oxfmt-config/package.json').version")
+          if [ "$npm_version" = "$local_version" ]; then
+            echo "Version $local_version already published. Skipping."
+            exit 0
+          fi
+          echo "Publishing $local_version (npm currently has $npm_version)"
+          pnpm publish packages/oxfmt-config --access public --no-git-checks
