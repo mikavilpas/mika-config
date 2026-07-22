@@ -1,0 +1,5 @@
+[tools]
+# renovate bumps this version automatically. git-cliff stays out of the regular
+# pnpm i + cache installation but is still available as a pinned dependency for
+# the release workflow.
+git-cliff = "2.13.1"
