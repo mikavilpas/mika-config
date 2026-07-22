@@ -64,3 +64,28 @@ jobs:
           STEPS_CHANGESETS_OUTPUTS_PULLREQUESTNUMBER: ${{ steps.changesets.outputs.pullRequestNumber }}
         run: >
           gh pr merge "${STEPS_CHANGESETS_OUTPUTS_PULLREQUESTNUMBER}" --auto --squash --repo "${{ github.repository }}"
+
+      - name: Tag and release the private root package
+        # The root @mikavilpas/mika-config is private, so `changeset publish`
+        # does not touch it beyond bumping the package.json version. Craete a
+        # tag and github release so that I can track all the changes manually
+        # in the same github releases view.
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          version="$(jq --raw-output .version package.json)"
+          tag="v${version}"
+          if git rev-parse --verify --quiet "refs/tags/${tag}" >/dev/null; then
+            echo "Tag ${tag} already exists, nothing to release."
+            exit 0
+          fi
+          cliff_version="$(yq --input-format toml --output-format yaml '.tools.git-cliff' mise.toml)"
+          notes="$(npx --yes "git-cliff@${cliff_version}" --tag-pattern '^v[0-9]' --unreleased --tag "${tag}" --strip all)"
+          git tag "${tag}"
+          git push origin "${tag}"
+          if [ -z "$(printf '%s' "${notes}" | tr -d '[:space:]')" ]; then
+            gh release create "${tag}" --title "${tag}" --generate-notes
+          else
+            printf '%s\n' "${notes}" | gh release create "${tag}" --title "${tag}" --notes-file -
+          fi
