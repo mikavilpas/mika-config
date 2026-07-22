@@ -2,11 +2,20 @@
 // oxlint-disable-next-line import/no-default-export
 export default {
   strict: true,
+  semverGroups: [
+    {
+      // this allows consumers to use a matching version and save disk space
+      // and installation time
+      label: "peerDependencies use caret ranges",
+      dependencyTypes: ["peer"],
+      range: "^",
+    },
+  ],
   versionGroups: [
     {
-      label: "Ignore peer dependencies",
+      label: "Peer deps must look like ^1.2.3 (no exact pins)",
       dependencyTypes: ["peer"],
-      isIgnored: true,
+      policy: "sameRange",
     },
     {
       label: "Local workspace packages use the workspace: protocol",
