@@ -10,17 +10,17 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "0.7.0",
-    "@changesets/cli": "2.31.1",
+    "@changesets/changelog-github": "catalog:",
+    "@changesets/cli": "catalog:",
     "@mikavilpas/oxfmt-config": "workspace:*",
-    "@types/node": "25.9.5",
-    "eslint-plugin-no-only-tests": "3.4.0",
-    "oxfmt": "0.59.0",
-    "oxlint": "1.74.0",
-    "oxlint-tsgolint": "0.25.0",
-    "re2": "1.26.0",
-    "typescript": "7.0.2",
-    "vitest": "4.1.10"
+    "@types/node": "catalog:",
+    "eslint-plugin-no-only-tests": "catalog:",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:",
+    "re2": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "packageManager": "pnpm@11.15.0"
 }

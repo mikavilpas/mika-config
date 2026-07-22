@@ -6,52 +6,82 @@ settings:
 
 catalogs:
   default:
+    '@arethetypeswrong/cli':
+      specifier: 0.18.5
+      version: 0.18.5
+    '@changesets/changelog-github':
+      specifier: 0.7.0
+      version: 0.7.0
+    '@changesets/cli':
+      specifier: 2.31.1
+      version: 2.31.1
+    '@types/node':
+      specifier: 25.9.5
+      version: 25.9.5
+    eslint-plugin-no-only-tests:
+      specifier: 3.4.0
+      version: 3.4.0
     oxfmt:
       specifier: 0.59.0
       version: 0.59.0
+    oxlint:
+      specifier: 1.74.0
+      version: 1.74.0
+    oxlint-tsgolint:
+      specifier: 0.25.0
+      version: 0.25.0
+    re2:
+      specifier: 1.26.0
+      version: 1.26.0
+    typescript:
+      specifier: 7.0.2
+      version: 7.0.2
+    vitest:
+      specifier: 4.1.10
+      version: 4.1.10
 
 importers:
 
   .:
     devDependencies:
       '@changesets/changelog-github':
-        specifier: 0.7.0
+        specifier: 'catalog:'
         version: 0.7.0
       '@changesets/cli':
-        specifier: 2.31.1
+        specifier: 'catalog:'
         version: 2.31.1(@types/node@25.9.5)
       '@mikavilpas/oxfmt-config':
         specifier: workspace:*
         version: link:packages/oxfmt-config
       '@types/node':
-        specifier: 25.9.5
+        specifier: 'catalog:'
         version: 25.9.5
       eslint-plugin-no-only-tests:
-        specifier: 3.4.0
+        specifier: 'catalog:'
         version: 3.4.0
       oxfmt:
-        specifier: 0.59.0
+        specifier: 'catalog:'
         version: 0.59.0
       oxlint:
-        specifier: 1.74.0
+        specifier: 'catalog:'
         version: 1.74.0(oxlint-tsgolint@0.25.0)
       oxlint-tsgolint:
-        specifier: 0.25.0
+        specifier: 'catalog:'
         version: 0.25.0
       re2:
-        specifier: 1.26.0
+        specifier: 'catalog:'
         version: 1.26.0
       typescript:
-        specifier: 7.0.2
+        specifier: 'catalog:'
         version: 7.0.2
       vitest:
-        specifier: 4.1.10
+        specifier: 'catalog:'
         version: 4.1.10(@types/node@25.9.5)(vite@8.1.4(@types/node@25.9.5))
 
   packages/oxfmt-config:
     devDependencies:
       '@arethetypeswrong/cli':
-        specifier: 0.18.5
+        specifier: 'catalog:'
         version: 0.18.5
       oxfmt:
         specifier: 'catalog:'
