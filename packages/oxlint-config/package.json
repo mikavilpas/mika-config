@@ -1,0 +1,46 @@
+{
+  "name": "@mikavilpas/oxlint-config",
+  "version": "0.0.1",
+  "description": "The oxlint config Mika Vilpas uses in personal projects.",
+  "keywords": [
+    "config",
+    "linter",
+    "oxlint"
+  ],
+  "homepage": "https://github.com/mikavilpas/mika-config/tree/main/packages/oxlint-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikavilpas/mika-config.git",
+    "directory": "packages/oxlint-config"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./configs/default.ts"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/configs/default.d.ts",
+        "import": "./dist/configs/default.js"
+      }
+    },
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -f ./*.tgz && tsc && pnpm pack && attw ./*.tgz; status=$?; rm -f ./*.tgz; exit $status",
+    "prepack": "tsc"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
+    "oxlint": "catalog:",
+    "oxlint-tsgolint": "catalog:"
+  },
+  "peerDependencies": {
+    "oxlint": "^1.74.0",
+    "oxlint-tsgolint": "^7.0.2001"
+  }
+}

@@ -1,29 +1,25 @@
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["typescript", "unicorn", "import"],
-  "jsPlugins": [
-    // https://github.com/levibuzolic/eslint-plugin-no-only-tests#oxlint
-    "eslint-plugin-no-only-tests"
-  ],
-  "categories": {
-    "correctness": "error",
-    "perf": "warn",
-    "suspicious": "warn",
-    "restriction": "warn"
+import { defineConfig, type OxlintConfig } from "oxlint"
+
+// Design principles:
+// - leave specific plugins out of the default config, so that projects can
+//   choose their own plugins
+// - the default config should be 99% of what each project wants out of the box
+// - ok to make improvements, but let's make breaking changes major releases to
+//   avoid blocking renovate
+const config: OxlintConfig = defineConfig({
+  options: {
+    typeAware: true,
+    denyWarnings: true,
+    reportUnusedDisableDirectives: "warn",
   },
-  "env": {
-    "builtin": true,
-    "es2026": true
+  plugins: ["typescript", "unicorn", "import"],
+  categories: {
+    correctness: "error",
+    perf: "warn",
+    suspicious: "warn",
+    restriction: "warn",
   },
-  "ignorePatterns": [
-    "**/vite.config.js",
-    "**/cypress.config.ts",
-    "**/test-environment/",
-    "dist/",
-    "cypress/support/tui-sandbox.ts"
-  ],
-  "rules": {
-    "no-only-tests/no-only-tests": "error",
+  rules: {
     "prefer-const": "error",
     "unified-signatures": "error",
     "no-useless-assignment": "error",
@@ -37,8 +33,8 @@
     "@typescript-eslint/ban-ts-comment": [
       "error",
       {
-        "minimumDescriptionLength": 10
-      }
+        minimumDescriptionLength: 10,
+      },
     ],
     "no-array-constructor": "error",
     "@typescript-eslint/no-empty-object-type": "error",
@@ -75,19 +71,19 @@
     "@typescript-eslint/restrict-plus-operands": [
       "error",
       {
-        "allowAny": false,
-        "allowBoolean": false,
-        "allowNullish": false,
-        "allowNumberAndString": false,
-        "allowRegExp": false
-      }
+        allowAny: false,
+        allowBoolean: false,
+        allowNullish: false,
+        allowNumberAndString: false,
+        allowRegExp: false,
+      },
     ],
     "@typescript-eslint/restrict-template-expressions": [
       "error",
       {
-        "allowNumber": true,
-        "allowBoolean": true
-      }
+        allowNumber: true,
+        allowBoolean: true,
+      },
     ],
     "@typescript-eslint/return-await": "error",
     "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
@@ -96,20 +92,22 @@
     "no-empty-function": [
       "error",
       {
-        "allow": ["constructors"]
-      }
+        allow: ["constructors"],
+      },
     ],
     "no-void": [
       "error",
       {
-        "allowAsStatement": true
-      }
-    ]
+        allowAsStatement: true,
+      },
+    ],
+    "oxc/no-rest-spread-properties": "off",
+    "oxc/no-optional-chaining": "off",
   },
-  "overrides": [
+  overrides: [
     {
-      "files": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-      "rules": {
+      files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+      rules: {
         "no-class-assign": "off",
         "no-const-assign": "off",
         "no-dupe-class-members": "off",
@@ -125,8 +123,11 @@
         "no-var": "error",
         "no-with": "off",
         "prefer-rest-params": "error",
-        "prefer-spread": "error"
-      }
-    }
-  ]
-}
+        "prefer-spread": "error",
+      },
+    },
+  ],
+})
+
+// oxlint-disable-next-line import/no-default-export
+export default config
