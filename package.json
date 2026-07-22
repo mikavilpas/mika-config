@@ -19,6 +19,7 @@
     "oxlint": "catalog:",
     "oxlint-tsgolint": "catalog:",
     "re2": "catalog:",
+    "syncpack": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   },
