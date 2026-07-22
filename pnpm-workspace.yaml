@@ -1,6 +1,8 @@
 allowBuilds:
   re2: true
   unrs-resolver: true
+catalogMode: strict
+saveExact: true
 onlyBuiltDependencies:
   - re2
   - esbuild
