@@ -80,7 +80,7 @@ jobs:
             echo "Tag ${tag} already exists, nothing to release."
             exit 0
           fi
-          cliff_version="$(yq --input-format toml --output-format yaml '.tools.git-cliff' mise.toml)"
+          cliff_version="$(yq '.tools.git-cliff' mise.toml)"
           notes="$(npx --yes "git-cliff@${cliff_version}" --tag-pattern '^v[0-9]' --unreleased --tag "${tag}" --strip all)"
           git tag "${tag}"
           git push origin "${tag}"
