@@ -32,7 +32,7 @@
     "prepack": "tsc"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.18.5",
+    "@arethetypeswrong/cli": "catalog:",
     "oxfmt": "catalog:"
   },
   "peerDependencies": {
