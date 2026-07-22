@@ -67,7 +67,7 @@ jobs:
 
       - name: Tag and release the private root package
         # The root @mikavilpas/mika-config is private, so `changeset publish`
-        # does not touch it beyond bumping the package.json version. Craete a
+        # does not touch it beyond bumping the package.json version. Create a
         # tag and github release so that I can track all the changes manually
         # in the same github releases view.
         env:
