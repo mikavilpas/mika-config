@@ -1,5 +1,11 @@
 # @mikavilpas/oxfmt-config
 
+## 3.0.1
+
+### Patch Changes
+
+- [#622](https://github.com/mikavilpas/mika-config/pull/622) [`ffca9ad`](https://github.com/mikavilpas/mika-config/commit/ffca9ad546d2361299ca5553f3cb6e04981d95e1) Thanks [@mikavilpas](https://github.com/mikavilpas)! - remove missing .oxfmtrc.json from package.json ref
+
 ## 3.0.0
 
 ### Major Changes
