@@ -19,5 +19,6 @@ catalog:
   oxlint: 1.74.0
   oxlint-tsgolint: 0.25.0
   re2: 1.26.0
+  syncpack: 15.3.2
   typescript: 7.0.2
   vitest: 4.1.10
