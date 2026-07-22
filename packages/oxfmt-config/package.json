@@ -19,16 +19,19 @@
   ],
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/oxfmt.config.d.ts",
-      "import": "./dist/oxfmt.config.js"
-    }
+    ".": "./oxfmt.config.ts"
   },
   "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/oxfmt.config.d.ts",
+        "import": "./dist/oxfmt.config.js"
+      }
+    },
     "access": "public"
   },
   "scripts": {
-    "build": "tsc && attw --pack",
+    "build": "rm -f ./*.tgz && tsc && pnpm pack && attw ./*.tgz; status=$?; rm -f ./*.tgz; exit $status",
     "prepack": "tsc"
   },
   "devDependencies": {
