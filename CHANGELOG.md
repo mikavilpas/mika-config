@@ -1,12 +1,17 @@
 # Changelog
 
-## [2.0.0](https://github.com/mikavilpas/mika-config/compare/v1.4.0...v2.0.0) (2026-07-21)
+## 2.0.1
 
+### Patch Changes
+
+- [#624](https://github.com/mikavilpas/mika-config/pull/624) [`73c56c6`](https://github.com/mikavilpas/mika-config/commit/73c56c6c0faafa309f1b928c2570f420035fc70b) Thanks [@mikavilpas](https://github.com/mikavilpas)! - move to using pnpm catalog as much as possible
+
+## [2.0.0](https://github.com/mikavilpas/mika-config/compare/v1.4.0...v2.0.0) (2026-07-21)
 
 ### ⚠ BREAKING CHANGES
 
-* rename project from mika-renovate to mika-config ([#592](https://github.com/mikavilpas/mika-config/issues/592))
+- rename project from mika-renovate to mika-config ([#592](https://github.com/mikavilpas/mika-config/issues/592))
 
 ### Miscellaneous Chores
 
-* rename project from mika-renovate to mika-config ([#592](https://github.com/mikavilpas/mika-config/issues/592)) ([6db8061](https://github.com/mikavilpas/mika-config/commit/6db8061f92ad0b0b991fd38bfd5c5cd7d8a7a50a))
+- rename project from mika-renovate to mika-config ([#592](https://github.com/mikavilpas/mika-config/issues/592)) ([6db8061](https://github.com/mikavilpas/mika-config/commit/6db8061f92ad0b0b991fd38bfd5c5cd7d8a7a50a))

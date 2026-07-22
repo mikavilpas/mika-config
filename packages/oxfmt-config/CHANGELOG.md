@@ -1,5 +1,11 @@
 # @mikavilpas/oxfmt-config
 
+## 3.0.2
+
+### Patch Changes
+
+- [#624](https://github.com/mikavilpas/mika-config/pull/624) [`73c56c6`](https://github.com/mikavilpas/mika-config/commit/73c56c6c0faafa309f1b928c2570f420035fc70b) Thanks [@mikavilpas](https://github.com/mikavilpas)! - move to using pnpm catalog as much as possible
+
 ## 3.0.1
 
 ### Patch Changes
