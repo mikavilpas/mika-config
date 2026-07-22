@@ -6,7 +6,7 @@ permissions:
 on: [push, pull_request]
 
 jobs:
-  lint:
+  oxlint:
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -58,3 +58,24 @@ jobs:
           cache: "pnpm"
       - run: pnpm install
       - run: pnpm knip
+
+  lint:
+    if: ${{ always() }}
+    needs:
+      - knip
+      - oxlint
+      - syncpack
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: Verify all required jobs succeeded
+        if: >-
+          ${{
+            contains(needs.*.result, 'failure')
+            || contains(needs.*.result, 'cancelled')
+            || contains(needs.*.result, 'skipped')
+          }}
+        run: |
+          echo "One or more required jobs did not succeed."
+          exit 1
