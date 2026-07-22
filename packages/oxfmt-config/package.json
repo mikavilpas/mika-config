@@ -15,7 +15,6 @@
   },
   "files": [
     "dist",
-    ".oxfmtrc.json",
     "README.md"
   ],
   "type": "module",
