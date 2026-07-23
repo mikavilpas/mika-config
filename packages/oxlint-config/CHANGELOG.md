@@ -1,5 +1,11 @@
 # @mikavilpas/oxlint-config
 
+## 1.1.0
+
+### Minor Changes
+
+- [#645](https://github.com/mikavilpas/mika-config/pull/645) [`639a8be`](https://github.com/mikavilpas/mika-config/commit/639a8bef1f470401bc60f9e40ef8a5cbd80e89b9) Thanks [@mikavilpas](https://github.com/mikavilpas)! - remove unused imports when safe
+
 ## 1.0.0
 
 ### Major Changes
