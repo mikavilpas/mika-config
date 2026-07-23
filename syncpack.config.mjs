@@ -1,5 +1,4 @@
 /** @type {import("syncpack").RcFile} */
-// oxlint-disable-next-line import/no-default-export
 export default {
   strict: true,
   semverGroups: [
