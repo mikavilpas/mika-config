@@ -1,5 +1,15 @@
 # @mikavilpas/oxlint-config
 
+## 2.0.0
+
+### Major Changes
+
+- [#648](https://github.com/mikavilpas/mika-config/pull/648) [`03fdad7`](https://github.com/mikavilpas/mika-config/commit/03fdad7b693c2a12218a4c268d2e9390d65bd5f9) Thanks [@mikavilpas](https://github.com/mikavilpas)! - Add more rules:
+
+  - prefer shorthand object properties
+  - add rule to disallow builtin Omit type
+  - require exhaustive switch statements
+
 ## 1.1.0
 
 ### Minor Changes
