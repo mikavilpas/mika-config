@@ -1,5 +1,15 @@
 # @mikavilpas/oxlint-config
 
+## 3.0.0
+
+### Major Changes
+
+- [#650](https://github.com/mikavilpas/mika-config/pull/650) [`37749f1`](https://github.com/mikavilpas/mika-config/commit/37749f1cb93a839b9dcfbbdcc86a00fa3091f5d2) Thanks [@mikavilpas](https://github.com/mikavilpas)! - Stop enabling oxlint's entire `restriction` category and instead opt into
+  hand-picked rules from it.
+
+  It was previously e.g. banning the use of async/await, which is not a
+  good idea.
+
 ## 2.0.0
 
 ### Major Changes
