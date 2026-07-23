@@ -103,6 +103,15 @@ const config: OxlintConfig = defineConfig({
     ],
     "oxc/no-rest-spread-properties": "off",
     "typescript/switch-exhaustiveness-check": "warn",
+    "@typescript-eslint/no-restricted-types": [
+      "error",
+      {
+        types: {
+          Omit: "Prefer using Except from type-fest instead. That one checks that the unwanted properties actually exist on the source object. See https://github.com/sindresorhus/type-fest",
+        },
+      },
+    ],
+
     "oxc/no-optional-chaining": "off",
     "no-unused-vars": [
       "warn",
