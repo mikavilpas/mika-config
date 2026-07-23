@@ -38,7 +38,7 @@ jobs:
           renovate-config-validator renovate.json default.json
         env:
           # renovate: datasource=npm depName=renovate
-          RENOVATE_VERSION: "43.272.4"
+          RENOVATE_VERSION: "43.272.5"
 
   validate-oxfmt-config:
     name: Validate oxfmt-config
