@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.2
+
+### Patch Changes
+
+- [#654](https://github.com/mikavilpas/mika-config/pull/654) [`ec90ad4`](https://github.com/mikavilpas/mika-config/commit/ec90ad4e114907007fbbeefa059e97e09f3f4544) Thanks [@mikavilpas](https://github.com/mikavilpas)! - ci: fix not being able to tag a release touching github workflows
+
 ## 2.0.1
 
 ### Patch Changes
