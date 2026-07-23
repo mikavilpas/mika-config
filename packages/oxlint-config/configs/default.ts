@@ -125,6 +125,7 @@ const config: OxlintConfig = defineConfig({
         },
       },
     ],
+    "object-shorthand": "warn",
   },
   overrides: [
     {
