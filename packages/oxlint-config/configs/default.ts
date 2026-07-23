@@ -102,6 +102,7 @@ const config: OxlintConfig = defineConfig({
       },
     ],
     "oxc/no-rest-spread-properties": "off",
+    "typescript/switch-exhaustiveness-check": "warn",
     "oxc/no-optional-chaining": "off",
     "no-unused-vars": [
       "warn",
