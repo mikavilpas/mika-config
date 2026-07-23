@@ -103,6 +103,18 @@ const config: OxlintConfig = defineConfig({
     ],
     "oxc/no-rest-spread-properties": "off",
     "oxc/no-optional-chaining": "off",
+    "no-unused-vars": [
+      "warn",
+      {
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_",
+        fix: {
+          // remove unused imports when safe
+          imports: "safe-fix",
+        },
+      },
+    ],
   },
   overrides: [
     {
