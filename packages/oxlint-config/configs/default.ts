@@ -17,7 +17,6 @@ const config: OxlintConfig = defineConfig({
     correctness: "error",
     perf: "warn",
     suspicious: "warn",
-    restriction: "warn",
   },
   rules: {
     "prefer-const": "error",
@@ -126,6 +125,21 @@ const config: OxlintConfig = defineConfig({
       },
     ],
     "object-shorthand": "warn",
+
+    "no-param-reassign": "error",
+    "typescript/explicit-module-boundary-types": "error",
+    "no-eval": "error",
+    "unicorn/no-abusive-eslint-disable": "error",
+    "unicorn/prefer-module": "error",
+    "unicorn/no-anonymous-default-export": "error",
+    "no-unused-expressions": "error",
+    "oxc/no-const-enum": "error",
+    "typescript/promise-function-async": "error",
+    "unicorn/no-process-exit": "error",
+    // forbid dependency cycles and barrel files
+    "import/no-cycle": "error",
+    "oxc/no-barrel-file": "error",
+    "typescript/no-non-null-assertion": "warn",
   },
   overrides: [
     {
@@ -152,5 +166,4 @@ const config: OxlintConfig = defineConfig({
   ],
 })
 
-// oxlint-disable-next-line import/no-default-export
 export default config
