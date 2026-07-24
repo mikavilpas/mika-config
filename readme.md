@@ -53,3 +53,40 @@ A project can use this configuration by adding the following to its [`renovate.j
   "extends": ["local>mikavilpas/mika-config"]
 }
 ```
+
+## Releasing new versions
+
+Versions are released based on <https://changesets.dev/>. When bumps are detected, packages are released automatically
+with [./.github/workflows/release.yml](./.github/workflows/release.yml).
+
+### Initial setup for a new package
+
+> [!NOTE]
+>
+> This is documented in more detail at
+> <https://github.blog/changelog/2025-07-31-npm-trusted-publishing-with-oidc-is-generally-available/> but loosely
+> reiterated here.
+
+CI uses trusted publishing via OpenID Connect (OIDC) to authenticate to <https://npmjs.org>. Before this can work, the
+first version must be released manually (only once).
+
+To publish the first version:
+
+```sh
+npm login # if you haven't logged in yet
+cd packages/knip-config # your new package here
+pnpm publish --access public
+```
+
+After this, set up trusted publishing in <https://www.npmjs.com/package/@mikavilpas/knip-config/access> (adapt for your
+new package).
+
+### Releasing new versions for existing packages
+
+After the [initial setup](#initial-setup-for-a-new-package), to release a new version:
+
+- run `pnpm changeset` to create a new changeset, and commit it. You can also add multiple ones to release multiple
+  packages at once.
+- submit your PR and merge it
+- when it's been merged, [./.github/workflows/release.yml](./.github/workflows/release.yml) will automatically release
+  the new version(s) based on the changeset(s)
