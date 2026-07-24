@@ -6,6 +6,10 @@ This repository contains
   - released as a git tag and github release only. This way I can roughly track the changes in the github releases view
 - [oxfmt-config](packages/oxfmt-config) for the [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) code formatter,
   released as an [npm package](https://www.npmjs.com/package/@mikavilpas/oxfmt-config)
+- [oxlint-config](packages/oxlint-config) for the [oxlint](https://oxc.rs/docs/guide/usage/linter.html) code linter,
+  released as an [npm package](https://www.npmjs.com/package/@mikavilpas/oxlint-config)
+- [knip-config](packages/knip-config) for the [knip](https://knip.dev/) unused dependency checker, released as an
+  [npm package](https://www.npmjs.com/package/@mikavilpas/knip-config)
 
 ## Features
 
