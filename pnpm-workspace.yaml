@@ -19,7 +19,7 @@ catalog:
   oxfmt: 0.59.0
   oxlint: 1.74.0
   oxlint-tsgolint: 7.0.2001
-  re2: 1.26.0
+  re2: 1.26.1
   syncpack: 15.3.2
   typescript: 7.0.2
   vitest: 4.1.10
