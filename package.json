@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "pnpm --filter oxfmt-config --filter oxlint-config build && pnpm build:renovate-config",
+    "build": "pnpm --filter oxfmt-config --filter oxlint-config --filter knip-config build && pnpm build:renovate-config",
     "build:renovate-config": "tsc --noEmit",
     "lint": "pnpx oxlint",
     "test": "vitest",
@@ -13,6 +13,7 @@
   "devDependencies": {
     "@changesets/changelog-github": "catalog:",
     "@changesets/cli": "catalog:",
+    "@mikavilpas/knip-config": "workspace:*",
     "@mikavilpas/oxfmt-config": "workspace:*",
     "@mikavilpas/oxlint-config": "workspace:*",
     "@types/node": "catalog:",
