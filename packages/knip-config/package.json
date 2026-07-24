@@ -1,0 +1,44 @@
+{
+  "name": "@mikavilpas/knip-config",
+  "version": "0.0.1",
+  "description": "The knip config Mika Vilpas uses in personal projects.",
+  "keywords": [
+    "config",
+    "knip",
+    "linter"
+  ],
+  "homepage": "https://github.com/mikavilpas/mika-config/tree/main/packages/knip-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikavilpas/mika-config.git",
+    "directory": "packages/knip-config"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./configs/knip-default.ts"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/configs/knip-default.d.ts",
+        "import": "./dist/configs/knip-default.js"
+      }
+    },
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -f ./*.tgz && tsc && pnpm pack && attw ./*.tgz; status=$?; rm -f ./*.tgz; exit $status",
+    "prepack": "tsc"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
+    "knip": "catalog:"
+  },
+  "peerDependencies": {
+    "knip": "^6.27.0"
+  }
+}
