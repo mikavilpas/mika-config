@@ -1,0 +1,1 @@
+# @mikavilpas/syncpack-config

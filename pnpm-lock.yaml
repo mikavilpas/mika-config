@@ -65,6 +65,9 @@ importers:
       '@mikavilpas/oxlint-config':
         specifier: workspace:*
         version: link:packages/oxlint-config
+      '@mikavilpas/syncpack-config':
+        specifier: workspace:*
+        version: link:packages/syncpack-config
       '@types/node':
         specifier: 'catalog:'
         version: 25.9.5
@@ -125,6 +128,15 @@ importers:
       oxlint-tsgolint:
         specifier: 'catalog:'
         version: 7.0.2001
+
+  packages/syncpack-config:
+    devDependencies:
+      '@arethetypeswrong/cli':
+        specifier: 'catalog:'
+        version: 0.18.5
+      syncpack:
+        specifier: 'catalog:'
+        version: 15.3.2
 
 packages:
 

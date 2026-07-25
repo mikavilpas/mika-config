@@ -10,6 +10,9 @@ This repository contains
   ![oxlint-config NPM Version](https://img.shields.io/npm/v/%40mikavilpas%2Foxlint-config)
 - [knip-config](packages/knip-config) for the [knip](https://knip.dev/) unused dependency checker
   ![knip-config NPM Version](https://img.shields.io/npm/v/%40mikavilpas%2Fknip-config)
+- [syncpack-config](packages/syncpack-config) for [syncpack](https://syncpack.dev/), the command-line tool for
+  consistent dependency versions in large JavaScript Monorepos
+  ![syncpack-config NPM Version](https://img.shields.io/npm/v/%40mikavilpas%2Fsyncpack-config)
 
 ## Features
 
