@@ -73,7 +73,7 @@ first version must be released manually (only once).
 To publish the first version:
 
 ```sh
-npm login # if you haven't logged in yet
+pnpm login # if you haven't logged in yet
 cd packages/knip-config # your new package here
 pnpm publish --access public
 ```
