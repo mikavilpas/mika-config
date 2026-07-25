@@ -16,6 +16,7 @@
     "@mikavilpas/knip-config": "workspace:*",
     "@mikavilpas/oxfmt-config": "workspace:*",
     "@mikavilpas/oxlint-config": "workspace:*",
+    "@mikavilpas/syncpack-config": "workspace:*",
     "@types/node": "catalog:",
     "eslint-plugin-no-only-tests": "catalog:",
     "knip": "catalog:",

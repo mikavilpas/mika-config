@@ -1,0 +1,43 @@
+{
+  "name": "@mikavilpas/syncpack-config",
+  "version": "0.0.1",
+  "description": "The syncpack config Mika Vilpas uses in personal projects.",
+  "keywords": [
+    "config",
+    "syncpack"
+  ],
+  "homepage": "https://github.com/mikavilpas/mika-config/tree/main/packages/syncpack-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikavilpas/mika-config.git",
+    "directory": "packages/syncpack-config"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./configs/syncpack-default.ts"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/configs/syncpack-default.d.ts",
+        "import": "./dist/configs/syncpack-default.js"
+      }
+    },
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rm -f ./*.tgz && tsc && pnpm pack && attw ./*.tgz; status=$?; rm -f ./*.tgz; exit $status",
+    "prepack": "tsc"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "catalog:",
+    "syncpack": "catalog:"
+  },
+  "peerDependencies": {
+    "syncpack": "^15.3.2"
+  }
+}
