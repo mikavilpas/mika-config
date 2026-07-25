@@ -1,5 +1,6 @@
 import assert from "node:assert"
 import { readFileSync } from "node:fs"
+import path from "node:path"
 
 import RE2 from "re2"
 import { describe, expect, it } from "vitest"
@@ -11,7 +12,8 @@ import { Lazy } from "./Lazy.js"
 const normalizeWhitespace = (text: string): string => text.replace(/\s+/g, " ").trim()
 
 describe("README documentation", () => {
-  const readme = readFileSync("readme.md", "utf-8")
+  // resolved relative to this file so the test does not depend on the cwd vitest runs in
+  const readme = readFileSync(path.join(import.meta.dirname, "README.md"), "utf-8")
 
   it("documents all features from default.json", () => {
     const allDescriptions: string[] = config.packageRules

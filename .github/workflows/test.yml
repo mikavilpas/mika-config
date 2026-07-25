@@ -35,7 +35,7 @@ jobs:
       - run:
           pnpm dlx --allow-build=better-sqlite3 --allow-build=core-js-pure --allow-build=dtrace-provider
           --allow-build=protobufjs --allow-build=re2 --package=renovate@${{ env.RENOVATE_VERSION }} --
-          renovate-config-validator renovate.json default.json
+          renovate-config-validator renovate.json default.json packages/renovate-config/default.json
         env:
           # renovate: datasource=npm depName=renovate
           RENOVATE_VERSION: "43.278.4"
