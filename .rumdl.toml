@@ -28,6 +28,9 @@ exclude = [
   # Specific files or patterns
   "CHANGELOG.md",
   "LICENSE.md",
+
+  # changesets start with yaml frontmatter and never have a level 1 heading (MD041)
+  ".changeset",
 ]
 
 # Respect .gitignore files when scanning directories (default: true)
