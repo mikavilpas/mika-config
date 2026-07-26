@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.3.0
+
+### Minor Changes
+
+- [#677](https://github.com/mikavilpas/mika-config/pull/677) [`a26c0ff`](https://github.com/mikavilpas/mika-config/commit/a26c0ff8ada497e6440b1cfc190b5a636ec4d467) Thanks [@mikavilpas](https://github.com/mikavilpas)! - Move the renovate configuration into `packages/renovate-config/`
+
+  Existing consumers need no changes: the root `default.json` is now a shim that forwards to the new location.
+
+  Unlike the other configs this one is not published to npm, because Renovate has deprecated npm-hosted presets.
+
 ## 2.2.0
 
 ### Minor Changes
