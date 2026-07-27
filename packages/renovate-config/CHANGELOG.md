@@ -1,5 +1,12 @@
 # @mikavilpas/renovate-config
 
+## 1.0.1
+
+### Patch Changes
+
+- [#685](https://github.com/mikavilpas/mika-config/pull/685) [`a2165b6`](https://github.com/mikavilpas/mika-config/commit/a2165b6551646c95e8d34ff1d3016838bda39aa1) Thanks [@mikavilpas](https://github.com/mikavilpas)! - Leave peerDependencies alone, since each bump is a breaking change for consumers.
+  The author must bump them manually when new versions are depended on.
+
 ## 1.0.0
 
 ### Major Changes
