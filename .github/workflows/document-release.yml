@@ -1,0 +1,60 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Document release
+
+# Pushing a `v<version>` tag documents everything that happened since the
+# previous `v<version>` tag as a github release. This does not target
+# consumers. It's only a historical record of what changed.
+on:
+  push:
+    tags:
+      - "v[0-9]*"
+
+permissions:
+  contents: read
+
+jobs:
+  document-release:
+    name: Document release
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write # create the github release for the pushed tag
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # git-cliff needs the full history and all tags
+          persist-credentials: false
+      - name: Create the github release for the tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          cliff_version="$(yq '.tools.git-cliff' mise.toml)"
+          # --latest: only the section for the newest matching tag, which is the
+          #   tag that triggered this run
+          # --tag-pattern: consider only the `v<version>` series, so that the
+          #   `<package-name>@<version>` tags changesets creates for the
+          #   individual packages do not cut the commit range short
+          # --strip all: drop the header and footer, leaving just the notes
+          notes="$(npx --yes "git-cliff@${cliff_version}" --latest --tag-pattern '^v[0-9]' --strip all)"
+
+          body="${RUNNER_TEMP}/release-body.md"
+          printf '%s\n' "${notes}" > "${body}"
+          {
+            echo "## Release notes for ${TAG}"
+            echo
+            cat "${body}"
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+          # Editing an existing release keeps re-runs idempotent, e.g. after
+          # deleting and re-pushing a tag.
+          if gh release view "${TAG}" >/dev/null 2>&1; then
+            gh release edit "${TAG}" --title "${TAG}" --notes-file "${body}"
+          else
+            gh release create "${TAG}" --title "${TAG}" --notes-file "${body}" --verify-tag
+          fi
+          echo "::notice::Release ready: $(gh release view "${TAG}" --json url --jq .url)"

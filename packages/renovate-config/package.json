@@ -1,0 +1,21 @@
+{
+  "name": "@mikavilpas/renovate-config",
+  "version": "0.0.1",
+  "private": true,
+  "description": "The renovate config Mika Vilpas uses in personal projects.",
+  "keywords": [
+    "config",
+    "renovate"
+  ],
+  "homepage": "https://github.com/mikavilpas/mika-config/tree/main/packages/renovate-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikavilpas/mika-config.git",
+    "directory": "packages/renovate-config"
+  },
+  "type": "module",
+  "devDependencies": {
+    "re2": "catalog:",
+    "vitest": "catalog:"
+  }
+}

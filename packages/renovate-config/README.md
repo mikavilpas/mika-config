@@ -7,6 +7,11 @@ Unlike the other packages in this repository, this one is not published to npm:
 to drop them. It is consumed over git instead, and released as a git tag and github release only. This way I can roughly
 track the changes in the github releases view.
 
+Its versions are managed with [changesets](https://changesets.dev/) like the published packages: it is a
+[private package](https://changesets.dev/guide/private-packages), so each release gets a
+`@mikavilpas/renovate-config@<version>` git tag and a github release with the changelog entries for that version, and
+nothing is sent to npm. See [the release documentation](../../readme.md#releasing-new-versions) for how that works.
+
 ## Usage
 
 A project can use this configuration by adding the following to its `renovate.json`:
@@ -19,7 +24,7 @@ A project can use this configuration by adding the following to its `renovate.js
 ```
 
 That resolves through the [shim at the repository root](../../default.json), which forwards to this directory. You can
-also point at this preset directly, optionally pinned to a tag:
+also point at this preset directly:
 
 ```json
 {
@@ -27,6 +32,10 @@ also point at this preset directly, optionally pinned to a tag:
   "extends": ["local>mikavilpas/mika-config//packages/renovate-config/default"]
 }
 ```
+
+Both forms track the latest ref, which is how I use this preset in my own projects. Pinning a release with the usual
+`#<tag>` suffix is not possible here: Renovate's preset parser only accepts `[\w\-./]` in the tag, and the release tags
+contain an `@`.
 
 ## Features
 
