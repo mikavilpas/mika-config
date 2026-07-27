@@ -4,16 +4,20 @@ const config: RcFile = {
   strict: true,
   semverGroups: [
     {
-      // this allows consumers to use a matching version and save disk space
-      // and installation time
-      label: "peerDependencies use caret ranges",
+      // - Don't allow "1.2.3"
+      // - Allow "^1.2.3", ">=1.2.3" or "^13 || ^14".
+      label: "peerDependencies must not be exact pins",
       dependencyTypes: ["peer"],
+      specifierTypes: ["exact"],
       range: "^",
     },
   ],
   versionGroups: [
     {
-      label: "Peer deps must look like ^1.2.3 (no exact pins)",
+      // Keeps peer ranges mutually compatible, and rejects specifiers syncpack
+      // cannot parse. Syncpack seems to be picky here - ">= 1.2.3" reports
+      // SameRangeMismatch, ">=1.2.3" is fine (no space).
+      label: "Peer deps must be parseable, mutually compatible ranges",
       dependencyTypes: ["peer"],
       policy: "sameRange",
     },
