@@ -47,10 +47,10 @@ commit_parsers = [
   { message = "^test", group = "<!-- 5 -->🧪 Testing" },
   { message = "^style", group = "<!-- 6 -->🎨 Styling" },
   { message = "^revert", group = "<!-- 7 -->◀️ Revert" },
+  { message = "^(build|ci|chore)", group = "<!-- 8 -->⚙️ Miscellaneous Tasks" },
   # Dependency updates get their own group instead of being skipped (the
   # default config's behaviour) or lumped in with the rest of the chores.
-  { message = "^chore\\(deps", group = "<!-- 8 -->📦 Dependencies" },
-  { message = "^(build|ci|chore)", group = "<!-- 9 -->⚙️ Miscellaneous Tasks" },
+  { message = "^chore\\(deps", group = "<!-- 9 -->📦 Dependencies" },
   # Catch-all so that nothing goes undocumented.
   { message = ".*", group = "<!-- 10 -->🗒️ Other Changes" },
 ]
