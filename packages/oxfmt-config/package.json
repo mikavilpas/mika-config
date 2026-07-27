@@ -39,6 +39,6 @@
     "oxfmt": "catalog:"
   },
   "peerDependencies": {
-    "oxfmt": "^0.59.0 || ^0.60.0"
+    "oxfmt": "^0.59.0"
   }
 }
