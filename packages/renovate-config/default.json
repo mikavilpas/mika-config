@@ -5,6 +5,14 @@
   "commitBodyTable": true,
   "packageRules": [
     {
+      "description": [
+        "Leave peerDependencies alone, since each bump is a breaking change for consumers.",
+        "The author must bump them manually when new versions are depended on."
+      ],
+      "matchDepTypes": ["peerDependencies"],
+      "enabled": false
+    },
+    {
       "description": ["Automerge digest updates weekly"],
       "matchUpdateTypes": ["digest"],
       "automerge": true,
