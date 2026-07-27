@@ -1,6 +1,5 @@
 {
   "name": "@mikavilpas/mika-config",
-  "version": "2.3.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -23,7 +22,6 @@
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
     "oxlint-tsgolint": "catalog:",
-    "re2": "catalog:",
     "syncpack": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"

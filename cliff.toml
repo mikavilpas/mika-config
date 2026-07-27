@@ -1,0 +1,56 @@
+# git-cliff configuration for the repository level release notes created by
+# ./.github/workflows/document-release.yml.
+#
+# The point of that release is to document *every* commit since the previous
+# `v<version>` tag, including the ones that never get a changeset (renovate
+# dependency bumps, ci and tooling work). git-cliff's built-in default config
+# skips `chore(deps)` commits, which would drop exactly those, so the parsers
+# below are spelled out instead of relying on the default.
+#
+# No [remote] section on purpose: git-cliff then makes no API calls, and github
+# still renders `#<pr>` numbers and 7 character commit sha's in the release body
+# as links.
+
+[changelog]
+header = ""
+# Group headings carry an ordering comment (<!-- N -->) so that group_by sorts
+# them predictably; `striptags` removes the comment when rendering.
+body = """
+{%- for group, commits in commits | group_by(attribute="group") %}
+### {{ group | striptags | trim | upper_first }}
+{% for commit in commits %}
+- {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
+{% if commit.breaking %}[**breaking**] {% endif %}\
+{{ commit.message | split(pat="\n") | first | trim | upper_first }} \
+- ({{ commit.id | truncate(length=7, end="") }})\
+{% endfor %}
+{% endfor %}
+"""
+footer = ""
+trim = true
+
+[git]
+conventional_commits = true
+# Never drop a commit from the notes: unconventional subjects fall through to
+# the catch-all parser below instead of being filtered out.
+filter_unconventional = false
+filter_commits = false
+# No tag_pattern here. The workflow passes --tag-pattern at runtime so that the
+# `v<version>` series is isolated from the `<package-name>@<version>` tags
+# changesets creates for the individual packages.
+commit_parsers = [
+  { message = "^feat", group = "<!-- 0 -->⛰️ Features" },
+  { message = "^fix", group = "<!-- 1 -->🐛 Bug Fixes" },
+  { message = "^refactor", group = "<!-- 2 -->🚜 Refactor" },
+  { message = "^doc", group = "<!-- 3 -->📚 Documentation" },
+  { message = "^perf", group = "<!-- 4 -->⚡ Performance" },
+  { message = "^test", group = "<!-- 5 -->🧪 Testing" },
+  { message = "^style", group = "<!-- 6 -->🎨 Styling" },
+  { message = "^revert", group = "<!-- 7 -->◀️ Revert" },
+  # Dependency updates get their own group instead of being skipped (the
+  # default config's behaviour) or lumped in with the rest of the chores.
+  { message = "^chore\\(deps", group = "<!-- 8 -->📦 Dependencies" },
+  { message = "^(build|ci|chore)", group = "<!-- 9 -->⚙️ Miscellaneous Tasks" },
+  # Catch-all so that nothing goes undocumented.
+  { message = ".*", group = "<!-- 10 -->🗒️ Other Changes" },
+]
