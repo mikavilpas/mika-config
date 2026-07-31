@@ -1,6 +1,6 @@
 {
   "name": "@mikavilpas/oxlint-config",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "The oxlint config Mika Vilpas uses in personal projects.",
   "keywords": [
     "config",
