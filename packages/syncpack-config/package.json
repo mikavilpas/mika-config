@@ -38,6 +38,6 @@
     "syncpack": "catalog:"
   },
   "peerDependencies": {
-    "syncpack": "^15.3.2"
+    "syncpack": ">=15.3.2"
   }
 }
