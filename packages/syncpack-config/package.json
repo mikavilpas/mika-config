@@ -1,6 +1,6 @@
 {
   "name": "@mikavilpas/syncpack-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The syncpack config Mika Vilpas uses in personal projects.",
   "keywords": [
     "config",
