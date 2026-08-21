@@ -16,10 +16,10 @@ catalog:
   "@types/node": 25.9.5
   eslint-plugin-no-only-tests: 3.4.0
   knip: 6.32.2
-  oxfmt: 0.63.0
-  oxlint: 1.78.0
+  oxfmt: 0.64.0
+  oxlint: 1.79.0
   oxlint-tsgolint: 7.0.2001
   re2: 1.26.1
   syncpack: 15.3.3
   typescript: 7.0.2
-  vitest: 4.1.10
+  vitest: 4.1.11
