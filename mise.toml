@@ -4,4 +4,4 @@
 # ./.github/workflows/document-release.yml, which reads the version from here.
 #
 # It can also be used locally to try out changes to the changelog format.
-git-cliff = "2.13.1"
+git-cliff = "2.14.1"
