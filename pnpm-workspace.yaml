@@ -11,8 +11,8 @@ packages:
   - packages/*
 catalog:
   "@arethetypeswrong/cli": 0.18.5
-  "@changesets/changelog-github": 1.0.0
-  "@changesets/cli": 3.0.1
+  "@changesets/changelog-github": 1.0.1
+  "@changesets/cli": 3.0.2
   "@types/node": 25.9.5
   eslint-plugin-no-only-tests: 3.4.0
   knip: 6.34.0
