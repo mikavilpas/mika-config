@@ -17,7 +17,7 @@ permissions:
 jobs:
   document-release:
     name: Document release
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: write # create the github release for the pushed tag
     steps:
