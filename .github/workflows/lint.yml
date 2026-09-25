@@ -74,6 +74,7 @@ jobs:
       - knip
       - oxlint
       - syncpack
+      - actionlint
     runs-on: ubuntu-26.04
     permissions:
       contents: read
