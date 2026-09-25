@@ -27,6 +27,15 @@ jobs:
         working-directory: packages/oxfmt-config/
       - run: pnpm run lint
 
+  actionlint:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: actionlint
+        uses: kjanat/actionlint@08bb2c4f0d039744455b87aef1c647fb8b66d37b # v1.17.0
+
   syncpack:
     runs-on: ubuntu-26.04
     steps:
