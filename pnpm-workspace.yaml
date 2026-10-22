@@ -16,9 +16,9 @@ catalog:
   "@changesets/cli": 3.0.3
   "@types/node": 25.9.9
   eslint-plugin-no-only-tests: 3.4.0
-  knip: 6.42.0
-  oxfmt: 0.73.0
-  oxlint: 1.88.0
+  knip: 6.42.1
+  oxfmt: 0.74.0
+  oxlint: 1.89.0
   oxlint-tsgolint: 7.0.2004
   re2: 1.27.0
   syncpack: 15.3.3
