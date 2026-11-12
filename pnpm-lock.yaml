@@ -192,8 +192,8 @@ catalogs:
       specifier: 7.0.2006
       version: 7.0.2006
     re2:
-      specifier: 1.27.0
-      version: 1.27.0
+      specifier: 1.27.1
+      version: 1.27.1
     syncpack:
       specifier: 15.3.3
       version: 15.3.3
@@ -288,7 +288,7 @@ importers:
     devDependencies:
       re2:
         specifier: 'catalog:'
-        version: 1.27.0
+        version: 1.27.1
       vitest:
         specifier: 'catalog:'
         version: 5.1.0(@types/node@26.6.6)(vite@8.3.6(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
@@ -1611,8 +1611,8 @@ packages:
     resolution: {integrity: sha512-FYgfaA69XZ93zaXLoMNQ+ViDXGGBgR8aLh03txzcFhV+9xOXx7+8DLCULrKKpR9+GsH9ZfHm82aSUPpozX0Ztg==}
     engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
-  re2@1.27.0:
-    resolution: {integrity: sha512-z5Vascmj7lQbU3YdfYJUDkBGGTnoAObcVW/CSbpI3WbVb1vZQsSzSWcGkfKU0JKrrGfPZwPr8EVHwYXKQKLVXw==}
+  re2@1.27.1:
+    resolution: {integrity: sha512-J0RHubiwH/isNWD2Z+TX+hpVZCkaS/X30KPtYwckK5sjEaW8BRhnd15EPIjBB5GxD174iEVtJmmCoqfErH1qDQ==}
     engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
   require-directory@2.1.1:
@@ -2908,7 +2908,7 @@ snapshots:
 
   proc-log@7.0.0: {}
 
-  re2@1.27.0:
+  re2@1.27.1:
     dependencies:
       install-artifact-from-github: 1.8.1
       nan: 2.30.0
