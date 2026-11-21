@@ -189,8 +189,8 @@ catalogs:
       specifier: 3.4.0
       version: 3.4.0
     knip:
-      specifier: 6.45.1
-      version: 6.45.1
+      specifier: 6.46.1
+      version: 6.46.1
     oxfmt:
       specifier: 0.79.0
       version: 0.79.0
@@ -201,8 +201,8 @@ catalogs:
       specifier: 7.0.2007
       version: 7.0.2007
     re2:
-      specifier: 1.27.1
-      version: 1.27.1
+      specifier: 1.27.2
+      version: 1.27.2
     syncpack:
       specifier: 15.3.3
       version: 15.3.3
@@ -243,7 +243,7 @@ importers:
         version: 3.4.0
       knip:
         specifier: 'catalog:'
-        version: 6.45.1
+        version: 6.46.1
       oxfmt:
         specifier: 'catalog:'
         version: 0.79.0
@@ -270,7 +270,7 @@ importers:
         version: 0.18.5
       knip:
         specifier: 'catalog:'
-        version: 6.45.1
+        version: 6.46.1
 
   packages/oxfmt-config:
     devDependencies:
@@ -297,7 +297,7 @@ importers:
     devDependencies:
       re2:
         specifier: 'catalog:'
-        version: 1.27.1
+        version: 1.27.2
       vitest:
         specifier: 'catalog:'
         version: 5.1.1(@types/node@26.6.6)(vite@8.3.8(@types/node@26.6.6)(jiti@2.7.0)(yaml@2.9.1))
@@ -1433,8 +1433,8 @@ packages:
   jsonc-parser@3.3.1:
     resolution: {integrity: sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ==}
 
-  knip@6.45.1:
-    resolution: {integrity: sha512-zp3zXKy2cZWiIttdlWU5fisKxVQaLSU6471ej0KGz1GdHdaHxpzTAO/LIyFNc3gU3v1W7LJaqvYumoO3l/u+6A==}
+  knip@6.46.1:
+    resolution: {integrity: sha512-5/ajqjZfmuv8O74+McrKBOSArKG6tsUgy6yJird36VZh9HiUq75qY4U39uqf9wjchEUOLrStuOZpFP057CZFRw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
@@ -1641,8 +1641,8 @@ packages:
     resolution: {integrity: sha512-FYgfaA69XZ93zaXLoMNQ+ViDXGGBgR8aLh03txzcFhV+9xOXx7+8DLCULrKKpR9+GsH9ZfHm82aSUPpozX0Ztg==}
     engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
-  re2@1.27.1:
-    resolution: {integrity: sha512-J0RHubiwH/isNWD2Z+TX+hpVZCkaS/X30KPtYwckK5sjEaW8BRhnd15EPIjBB5GxD174iEVtJmmCoqfErH1qDQ==}
+  re2@1.27.2:
+    resolution: {integrity: sha512-bjhBWehTN+8J7Ch3PxCSvqySP/E2jh/pDKFy0kCNm/a4ZmkrtcsHw+/ziE7JCMVyB/iYuhzgc3mrY3gKp7JSRw==}
     engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
   require-directory@2.1.1:
@@ -2711,7 +2711,7 @@ snapshots:
 
   jsonc-parser@3.3.1: {}
 
-  knip@6.45.1:
+  knip@6.46.1:
     dependencies:
       formatly: 0.11.4
       get-tsconfig: 4.14.3
@@ -2966,7 +2966,7 @@ snapshots:
 
   proc-log@7.0.0: {}
 
-  re2@1.27.1:
+  re2@1.27.2:
     dependencies:
       install-artifact-from-github: 1.8.1
       nan: 2.30.0
